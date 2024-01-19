@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+      "id": {"type": "integer"},
+      "name": {"type": "string"},
+      "home_phone": {"type": "string"},
+      "birth_date": {"type": "string", "format": "date"},
+      "day": {"type": "string", "enum": ["SU", "MO", "TU", "WE", "TH", "FR", "SA"]}
+    },
+    "required": ["id", "name"],
+    "oneOf": [
+      {"required": ["home_phone"]},
+      {"required": ["cell_phone"]},
+      {"required": ["work_phone"]}
+    ],
+    "eitherOr": [
+      ["birth_date", "govt_id_number"]
+    ],
+    "mutuallyExclusive": [
+      ["home_phone", "work_phone"]
+    ]
+  }
+  
